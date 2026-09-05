@@ -1,5 +1,7 @@
 # 02 — Tenant-Safe Event Service
 
+[Read the Engineering Foundations chapter →](https://guide.organizedai.vip/agentic-eng/chapters/engineering-foundations/)
+
 Build the deterministic service around the model: validate the request, derive
 scope from trusted context, preserve a source version, and reject a stale write.
 

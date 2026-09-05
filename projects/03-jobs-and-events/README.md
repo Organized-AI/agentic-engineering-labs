@@ -1,5 +1,7 @@
 # 03 — Leased Job Runner
 
+[Read the Jobs & Events chapter →](https://guide.organizedai.vip/agentic-eng/chapters/jobs-and-events/)
+
 Use SQLite to implement idempotent submission, leases, fencing tokens, an
 attempt limit, atomic completion, and a transactional outbox record.
 

@@ -1,5 +1,7 @@
 # 08 — Queueing Workload Simulator
 
+[Read the Load Testing chapter →](https://guide.organizedai.vip/agentic-eng/chapters/load-testing/)
+
 Simulate an open-loop arrival schedule, one or more workers, deadlines, and
 accepted outcomes. Find the point where offered load increases while goodput
 falls.

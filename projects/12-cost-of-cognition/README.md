@@ -1,5 +1,7 @@
 # 12 — Accepted-Outcome Cost Ledger
 
+[Read the Cost of Cognition chapter →](https://guide.organizedai.vip/agentic-eng/chapters/cost-of-cognition/)
+
 Calculate cost per accepted result from every attempted task, including retries
 and review time. Compare a two-stage route and a self-hosting break-even case.
 

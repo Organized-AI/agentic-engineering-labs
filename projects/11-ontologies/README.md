@@ -1,5 +1,7 @@
 # 11 — Source-Backed Domain Graph
 
+[Read the Ontologies & Semantics chapter →](https://guide.organizedai.vip/agentic-eng/chapters/ontologies/)
+
 Resolve canonical event facts from explicit relationships, provenance, approval,
 and effective time. Keep authorization outside the graph.
 

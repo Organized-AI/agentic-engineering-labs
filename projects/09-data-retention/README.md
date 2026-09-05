@@ -1,5 +1,7 @@
 # 09 — Synthetic Canary Retention Audit
 
+[Read the Data Retention chapter →](https://guide.organizedai.vip/agentic-eng/chapters/data-retention/)
+
 Pass a unique synthetic marker through success and failure paths, inspect known
 stores, expire data, and report what remains. This is a test of known surfaces,
 not proof that no unknown copy exists.

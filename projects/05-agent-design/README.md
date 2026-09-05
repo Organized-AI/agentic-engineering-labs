@@ -1,5 +1,7 @@
 # 05 — Bounded Tool Agent
 
+[Read the Agent Design chapter →](https://guide.organizedai.vip/agentic-eng/chapters/agent-design/)
+
 Build a deterministic agent harness that can read approved event data or ask a
 question, but cannot turn text inside a record into new authority.
 

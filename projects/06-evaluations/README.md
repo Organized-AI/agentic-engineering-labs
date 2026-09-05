@@ -1,5 +1,7 @@
 # 06 — Outcome Evaluation Harness
 
+[Read the Evaluations chapter →](https://guide.organizedai.vip/agentic-eng/chapters/evaluations/)
+
 Run repeated trials, grade environment state and forbidden effects, keep every
 attempt in the denominator, and make a release decision from hard gates plus a
 minimum acceptance rate.

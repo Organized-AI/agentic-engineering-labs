@@ -42,22 +42,23 @@ result.
 
 | # | Topic | Project | Checkpoint |
 | --- | --- | --- | --- |
-| 01 | Experimentation | Paired experiment ledger | Compare the same cases and explain regressions |
-| 02 | Engineering foundations | Tenant-safe event service | Validate contracts and reject stale writes |
-| 03 | Jobs & events | Leased job runner | Deduplicate, recover, and fence stale workers |
-| 04 | LLM gateways | Policy-aware model router | Preserve policy and budget during fallback |
-| 05 | Agent design | Bounded tool agent | Prevent untrusted text from expanding authority |
-| 06 | Evaluations | Outcome evaluation harness | Grade state, repeats, and release gates |
-| 07 | Inference infrastructure | Memory and hosting planner | Estimate weights/KV cache and compare ownership |
-| 08 | Load testing | Queueing workload simulator | Find the goodput saturation point |
-| 09 | Data retention | Synthetic canary audit | Find persistence across success and failure paths |
-| 10 | Kernels & performance | Vector-kernel benchmark | Prove correctness before claiming speedup |
-| 11 | Ontologies & semantics | Source-backed domain graph | Resolve canonical facts with provenance |
-| 12 | Cost of cognition | Accepted-outcome ledger | Include retries, review, and utilization |
+| 01 | [Experimentation](https://guide.organizedai.vip/agentic-eng/chapters/experimentation/) | [Paired experiment ledger](projects/01-experimentation/) | Compare the same cases and explain regressions |
+| 02 | [Engineering foundations](https://guide.organizedai.vip/agentic-eng/chapters/engineering-foundations/) | [Tenant-safe event service](projects/02-engineering-foundations/) | Validate contracts and reject stale writes |
+| 03 | [Jobs & events](https://guide.organizedai.vip/agentic-eng/chapters/jobs-and-events/) | [Leased job runner](projects/03-jobs-and-events/) | Deduplicate, recover, and fence stale workers |
+| 04 | [LLM gateways](https://guide.organizedai.vip/agentic-eng/chapters/llm-gateways/) | [Policy-aware model router](projects/04-llm-gateways/) | Preserve policy and budget during fallback |
+| 05 | [Agent design](https://guide.organizedai.vip/agentic-eng/chapters/agent-design/) | [Bounded tool agent](projects/05-agent-design/) | Prevent untrusted text from expanding authority |
+| 06 | [Evaluations](https://guide.organizedai.vip/agentic-eng/chapters/evaluations/) | [Outcome evaluation harness](projects/06-evaluations/) | Grade state, repeats, and release gates |
+| 07 | [Inference infrastructure](https://guide.organizedai.vip/agentic-eng/chapters/inference-infrastructure/) | [Memory and hosting planner](projects/07-inference-infrastructure/) | Estimate weights/KV cache and compare ownership |
+| 08 | [Load testing](https://guide.organizedai.vip/agentic-eng/chapters/load-testing/) | [Queueing workload simulator](projects/08-load-testing/) | Find the goodput saturation point |
+| 09 | [Data retention](https://guide.organizedai.vip/agentic-eng/chapters/data-retention/) | [Synthetic canary audit](projects/09-data-retention/) | Find persistence across success and failure paths |
+| 10 | [Kernels & performance](https://guide.organizedai.vip/agentic-eng/chapters/kernels-and-performance/) | [Vector-kernel benchmark](projects/10-kernels-and-performance/) | Prove correctness before claiming speedup |
+| 11 | [Ontologies & semantics](https://guide.organizedai.vip/agentic-eng/chapters/ontologies/) | [Source-backed domain graph](projects/11-ontologies/) | Resolve canonical facts with provenance |
+| 12 | [Cost of cognition](https://guide.organizedai.vip/agentic-eng/chapters/cost-of-cognition/) | [Accepted-outcome ledger](projects/12-cost-of-cognition/) | Include retries, review, and utilization |
 
 ## Progress
 
-Use [PROGRESS.md](PROGRESS.md) as a repository checklist. The website tracks four
+Use [PROGRESS.md](PROGRESS.md) as a repository checklist. The [website progress
+dashboard](https://guide.organizedai.vip/agentic-eng/progress/) tracks four
 milestones per chapter in browser storage and can export/import a JSON progress
 file. The repository and website use the same stable project slugs.
 

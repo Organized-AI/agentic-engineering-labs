@@ -1,5 +1,7 @@
 # 07 — Inference Memory & Hosting Planner
 
+[Read the Inference Infrastructure chapter →](https://guide.organizedai.vip/agentic-eng/chapters/inference-infrastructure/)
+
 Estimate weight memory and conventional KV-cache memory, then compare managed
 and self-operated hosting with explicit operational assumptions.
 

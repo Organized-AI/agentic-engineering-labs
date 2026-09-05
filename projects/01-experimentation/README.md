@@ -1,5 +1,7 @@
 # 01 — Paired Experiment Ledger
 
+[Read the Experimentation chapter →](https://guide.organizedai.vip/agentic-eng/chapters/experimentation/)
+
 Build a tiny experiment runner that compares two configurations on the **same**
 cases. The checkpoint reports wins, regressions, unresolved failures, and the
 cost per accepted result.

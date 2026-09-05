@@ -1,5 +1,7 @@
 # 10 — Vector Kernel Correctness & Speedup
 
+[Read the Kernels & Performance chapter →](https://guide.organizedai.vip/agentic-eng/chapters/kernels-and-performance/)
+
 Write a blocked vector-add “kernel” in ordinary Python, verify awkward boundary
 sizes, and calculate the maximum whole-system impact of a local speedup.
 
