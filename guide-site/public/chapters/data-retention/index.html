@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ZDR scope, persistence inventories, ephemeral processing, deletion evidence, and incident handling."><meta name="theme-color" content="#fffcf4">
+<title>09. Data retention · Organized AI</title><link rel="canonical" href="https://guide.organizedai.vip/agentic-eng/chapters/data-retention/">
+<meta property="og:title" content="09. Data retention"><meta property="og:description" content="ZDR scope, persistence inventories, ephemeral processing, deletion evidence, and incident handling."><meta property="og:type" content="article"><meta property="og:url" content="https://guide.organizedai.vip/agentic-eng/chapters/data-retention/">
+<link rel="icon" href="/agentic-eng/assets/favicon.svg?v=a96d215233c7" type="image/svg+xml">
+<link rel="preload" href="/agentic-eng/assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/agentic-eng/assets/fonts/jetbrains-mono-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/agentic-eng/assets/style.css?v=a96d215233c7"><link rel="stylesheet" href="/agentic-eng/assets/editorial.css?v=a96d215233c7">
+<script src="/agentic-eng/assets/app.js?v=a96d215233c7" defer></script><script src="/agentic-eng/assets/editorial.js?v=a96d215233c7" defer></script>
+</head><body class="chapter-page" data-current="data-retention">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="/agentic-eng/">ORGANIZED <span class="brand-yellow">AI</span></a>
+  <nav class="header-nav" aria-label="Primary navigation"><a href="/agentic-eng/#curriculum">Curriculum</a><a href="/agentic-eng/progress/">Progress</a><a href="/agentic-eng/#practice">The practice</a><a href="/agentic-eng/sources/">Sources</a></nav>
+  <div class="topbar-actions"><button class="search-trigger" type="button" aria-haspopup="dialog"><span>Search</span><kbd>/</kbd></button><button class="menu-trigger" aria-label="Open chapter menu" aria-expanded="false" aria-controls="chapter-menu" aria-haspopup="dialog" type="button">Menu</button></div>
+</header>
+<aside class="sidebar" id="sidebar">
+  <a class="sidebar-title" href="/agentic-eng/">AGENTIC ENGINEERING<span>A field guide to useful systems</span></a>
+  <div class="progress-box"><div><span>YOUR PROGRESS</span><span data-progress-label>0 / 48</span></div><progress max="48" value="0" aria-label="Hands-on milestones complete"></progress><p><a href="/agentic-eng/progress/">Open progress dashboard →</a></p></div>
+  <nav aria-label="Guide chapters"><p class="nav-group">01 · Foundations</p><a class="chapter-link" href="/agentic-eng/chapters/experimentation/"  data-chapter="experimentation"><span class="chapter-number">01</span><span>Experimentation</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/engineering-foundations/"  data-chapter="engineering-foundations"><span class="chapter-number">02</span><span>Engineering foundations</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/jobs-and-events/"  data-chapter="jobs-and-events"><span class="chapter-number">03</span><span>Jobs &amp; events</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">02 · Orchestration</p><a class="chapter-link" href="/agentic-eng/chapters/llm-gateways/"  data-chapter="llm-gateways"><span class="chapter-number">04</span><span>LLM gateways</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/agent-design/"  data-chapter="agent-design"><span class="chapter-number">05</span><span>Agent design</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/evaluations/"  data-chapter="evaluations"><span class="chapter-number">06</span><span>Evaluations</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">03 · Runtime</p><a class="chapter-link" href="/agentic-eng/chapters/inference-infrastructure/"  data-chapter="inference-infrastructure"><span class="chapter-number">07</span><span>Inference infrastructure</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/load-testing/"  data-chapter="load-testing"><span class="chapter-number">08</span><span>Load testing</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link active" href="/agentic-eng/chapters/data-retention/" aria-current="page" data-chapter="data-retention"><span class="chapter-number">09</span><span>Data retention</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/kernels-and-performance/"  data-chapter="kernels-and-performance"><span class="chapter-number">10</span><span>Kernels &amp; performance</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">04 · Meaning &amp; economics</p><a class="chapter-link" href="/agentic-eng/chapters/ontologies/"  data-chapter="ontologies"><span class="chapter-number">11</span><span>Ontologies &amp; semantics</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/cost-of-cognition/"  data-chapter="cost-of-cognition"><span class="chapter-number">12</span><span>Cost of cognition</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">05 · Put it into practice</p><a class="extra-link" href="/agentic-eng/progress/" >Hands-on progress</a><a class="extra-link" href="/agentic-eng/capstone/" >Capstone & starter lab ↗</a><a class="extra-link" href="/agentic-eng/glossary/">Glossary</a><a class="extra-link" href="/agentic-eng/sources/">Sources & editorial notes</a><a class="extra-link" href="/agentic-eng/book/">Full reading edition</a></nav>
+  <div class="sidebar-footer">EDITION 01 <span>SEP 2026</span></div>
+</aside>
+<div class="page-layout"><main id="main" tabindex="-1"><header class="chapter-header"><div class="eyebrow">03 · Runtime <span class="slash">/</span> CHAPTER 09</div><h1>Data retention</h1><p class="chapter-subtitle">Privacy across the entire path.</p><div class="chapter-meta"><span>5 MIN READ</span><span>INTERMEDIATE</span><span>3 RUNNABLE TESTS</span></div></header><article class="prose"><blockquote>
+<p><strong>The question:</strong> Where can a request’s content persist after the system says it is finished?</p>
+</blockquote>
+<p>Privacy is not a property of the model endpoint alone. The application, gateway, queue, tools, observability system, caches, crash reports, and backups can each retain copies. A data-flow diagram is therefore more useful than a single “private AI” label.</p>
+<p>This chapter is an engineering review framework, not a legal determination that a deployment meets a particular regulatory obligation.</p>
+<h2 id="separate-the-promises">Separate the promises</h2>
+<p>Do not collapse distinct questions:</p>
+<ul>
+<li>Is customer content used to train models?</li>
+<li>Is content stored, and for how long?</li>
+<li>Which region or processors handle it?</li>
+<li>Who can access it while it exists?</li>
+<li>What metadata remains after content is removed?</li>
+<li>What happens to backups, cached results, and diagnostic copies?</li>
+</ul>
+<p>Anthropic’s API documentation defines ZDR scope by endpoint and eligible feature and distinguishes other retention arrangements. That is one provider’s documented contract, not a universal definition for every service. Verify the exact organization, feature, route, and agreement in use. <a href="/agentic-eng/sources/#retention">Retention reference</a></p>
+<p>Self-hosting changes who operates the system. It does not, by itself, prove that request content is never persisted.</p>
+<h2 id="model-the-complete-data-path">Model the complete data path</h2>
+<p>For each component, record data categories, persistence mechanism, retention period, deletion mechanism, access roles, and evidence owner. Include success, failure, retry, cancellation, and incident paths.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Possible retained material</th>
+<th>Question to test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API server</td>
+<td>Request bodies, debug logs</td>
+<td>Does validation failure log the entire input?</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>Prompts, responses, usage callbacks</td>
+<td>Is content capture enabled indirectly?</td>
+</tr>
+<tr>
+<td>Job store</td>
+<td>Serialized input, exception payloads</td>
+<td>Does a retry duplicate sensitive text?</td>
+</tr>
+<tr>
+<td>Model service</td>
+<td>Content, files, feature state</td>
+<td>Is this exact feature eligible under the policy?</td>
+</tr>
+<tr>
+<td>Tools</td>
+<td>Queries, returned records, uploaded files</td>
+<td>Does the downstream service keep a copy?</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>Traces, spans, crash dumps</td>
+<td>Do automatic integrations collect content?</td>
+</tr>
+<tr>
+<td>Storage/backups</td>
+<td>Results, snapshots, replicas</td>
+<td>What does deletion mean for each copy?</td>
+</tr>
+</tbody>
+</table>
+<p>The question is not merely whether a file named <code>prompt.log</code> exists. Content can appear in a stack trace, a failed request payload, or a third-party tracing callback.</p>
+<h2 id="resolve-durability-versus-minimization">Resolve durability versus minimization</h2>
+<p>Durable workflows often need enough state to recover. A zero-retention objective may prohibit storing the raw content required for that recovery. Make the conflict explicit rather than promising both properties without defining their scope.</p>
+<p>One proposed design is to keep only an opaque, authorized record reference in the job and fetch content at execution time. That reduces duplicate storage but introduces other questions: what if the record changes or is deleted? Does the reference itself reveal sensitive information? Can the requester’s access be revoked while the job waits?</p>
+<p>Another design uses an approved encrypted transient store with a bounded lifetime. That is retention, even if brief and encrypted. Describe it honestly and confirm whether the intended policy allows it.</p>
+<p>For the event assistant, decide whether draft results are intended business records. Do not include them in an unqualified promise that “nothing is stored” while simultaneously providing a permanent brief history.</p>
+<h2 id="keep-telemetry-useful-without-default-content-capture">Keep telemetry useful without default content capture</h2>
+<p>Begin with metadata: operation ID, stage, elapsed time, route, input/output size, outcome, retry count, and policy result. Only add content capture for a specifically approved diagnostic purpose with access restrictions and an expiration.</p>
+<p>OpenTelemetry’s GenAI conventions are a useful observability reference, but enabling a convention or integration is not a privacy assessment. Review the actual payloads and maturity of the implementation you adopt. <a href="/agentic-eng/sources/#otel">Observability reference</a></p>
+<p>Do not assume hashing private text anonymizes it. Low-entropy values can sometimes be guessed, and identifiers can remain linkable. Choose metadata based on what you need to diagnose and the sensitivity of what it reveals.</p>
+<h2 id="lab-trace-a-synthetic-canary">Lab: trace a synthetic canary</h2>
+<p>Use a unique synthetic marker, never a real secret or personal record.</p>
+<ol>
+<li>Send the marker through a normal event-brief request.</li>
+<li>Repeat with a validation error, tool timeout, worker retry, and simulated crash.</li>
+<li>Search the stores and logs you are authorized to inspect for the marker.</li>
+<li>Check tracing callbacks, queue payloads, saved errors, and object storage.</li>
+<li>Trigger the designed deletion or expiration process and verify its behavior.</li>
+<li>Record components you cannot inspect and what contractual or provider evidence covers them.</li>
+</ol>
+<p>A failed search is not proof that no copy exists. The canary checks known surfaces; combine it with configuration review, service documentation, access review, and provider evidence.</p>
+<p>The offline starter persists synthetic input references and brief content in SQLite. It is intentionally <strong>not</strong> a ZDR implementation. Use its database to practice finding retained data before designing a different retention policy.</p>
+<h2 id="plan-the-exception-path">Plan the exception path</h2>
+<p>Define who can authorize diagnostic capture, how it is enabled, which data is excluded, and how it expires. For an accidental disclosure, preserve the minimum incident evidence needed without making uncontrolled extra copies of the sensitive material.</p>
+<p>Review fallback routes as part of the same data path. A compliant primary endpoint does not make an ineligible fallback acceptable. Review tool calls too: a web search query can disclose content even when the model inference itself remains inside your controlled environment.</p>
+<h2 id="failure-drills">Failure drills</h2>
+<p>Turn on a debug integration in a test environment and inspect its output. Crash after a provider response arrives. Retry a failed job. Export a trace. Restore a test backup. Ask whether the documented policy still describes what actually happened.</p>
+<h2 id="ship-gate">Ship gate</h2>
+<p>You have a component-by-component inventory, tested success and failure paths, explicit retention scope, and documented unknowns. A knowledgeable reviewer can trace every content copy and explain its lifecycle. After the privacy boundary is clear, continue to <a href="/agentic-eng/chapters/kernels-and-performance/">kernels and performance</a> or skip ahead to <a href="/agentic-eng/chapters/ontologies/">business semantics</a>.</p>
+</article><section class="companion-project" id="companion-project"><div class="project-heading"><div><p class="eyebrow">HANDS-ON PROJECT 09</p><h2>Synthetic Canary Audit</h2><p>Find a synthetic marker across success, failure, and expiry paths.</p></div><span class="test-count">3 TESTS</span></div><div class="project-grid"><div><h3>Run the checkpoint</h3><pre><code>cd projects/09-data-retention
+python3 -m unittest -v test_solution.py
+python3 solution.py</code></pre><div class="project-links"><a href="https://github.com/Organized-AI/agentic-engineering-labs/tree/main/projects/09-data-retention" target="_blank" rel="noopener noreferrer">Open project ↗</a><a href="https://github.com/Organized-AI/agentic-engineering-labs/blob/main/projects/09-data-retention/starter.py" target="_blank" rel="noopener noreferrer">Starter</a><a href="https://github.com/Organized-AI/agentic-engineering-labs/blob/main/projects/09-data-retention/solution.py" target="_blank" rel="noopener noreferrer">Solution</a><a href="https://github.com/Organized-AI/agentic-engineering-labs/blob/main/projects/09-data-retention/test_solution.py" target="_blank" rel="noopener noreferrer">Tests</a></div></div><div><h3>Worked code</h3><pre><code>marker = &quot;SYNTHETIC-CANARY-001&quot;
+error_log.write(now=0, value=&quot;timeout &quot; + marker)
+print(audit([error_log, job_store], marker))
+error_log.expire(now=30)
+print(audit([error_log, job_store], marker))</code></pre></div></div><div class="milestone-panel"><div><p class="eyebrow">PROJECT PROGRESS</p><p>Complete all four milestones to finish this chapter.</p></div><div class="milestone-grid"><label class="milestone"><input type="checkbox" data-project="data-retention" data-milestone="read"><span><strong>Read &amp; explain</strong>I can explain the core invariant in my own words.</span></label><label class="milestone"><input type="checkbox" data-project="data-retention" data-milestone="tests"><span><strong>Run the tests</strong>I ran the project checkpoint locally.</span></label><label class="milestone"><input type="checkbox" data-project="data-retention" data-milestone="challenge"><span><strong>Complete the challenge</strong>I implemented or extended the starter.</span></label><label class="milestone"><input type="checkbox" data-project="data-retention" data-milestone="reflect"><span><strong>Write a reflection</strong>I recorded what the tests prove—and what they do not.</span></label></div></div></section><section class="chapter-finish"><div><span class="eyebrow">MAKE IT STICK</span><h2>Can you pass the ship gate?</h2><p>Complete the reading, tests, challenge, and reflection.</p></div><button class="button primary" type="button" data-complete="data-retention" aria-pressed="false">Complete all milestones</button></section><nav class="chapter-pagination" aria-label="Adjacent chapters"><a href="/agentic-eng/chapters/load-testing/"><span>← PREVIOUS</span><strong>Load testing</strong></a><a href="/agentic-eng/chapters/kernels-and-performance/"><span>NEXT →</span><strong>Kernels &amp; performance</strong></a></nav></main><aside class="page-toc" aria-label="On this page"><p>ON THIS PAGE</p><nav><a href="#separate-the-promises">Separate the promises</a><a href="#model-the-complete-data-path">Model the complete data path</a><a href="#resolve-durability-versus-minimization">Resolve durability versus minimization</a><a href="#keep-telemetry-useful-without-default-content-capture">Keep telemetry useful without default content capture</a><a href="#lab-trace-a-synthetic-canary">Lab: trace a synthetic canary</a><a href="#plan-the-exception-path">Plan the exception path</a><a href="#failure-drills">Failure drills</a><a href="#ship-gate">Ship gate</a></nav><a class="back-top" href="#main">Back to top ↑</a></aside></div>
+<footer class="site-footer"><span>Organized AI / Agentic Engineering</span><span>Reviewed September 5, 2026 · <a href="/agentic-eng/sources/">Evidence & scope</a></span></footer>
+<dialog class="chapter-menu" id="chapter-menu" aria-label="Chapter menu">
+  <header class="menu-header"><a class="brand" href="/agentic-eng/">ORGANIZED <span class="brand-yellow">AI</span></a><button class="menu-close" type="button" aria-label="Close chapter menu" autofocus>Close <span aria-hidden="true">×</span></button></header>
+  <div class="menu-layout"><div class="menu-overview"><p class="eyebrow">Agentic Engineering / Field guide</p><nav aria-label="Guide resources"><a href="/agentic-eng/">Overview</a><a href="/agentic-eng/progress/">Your progress</a><a href="/agentic-eng/capstone/">The capstone</a><a href="/agentic-eng/glossary/">Glossary</a><a href="/agentic-eng/sources/">The sources</a><a href="/agentic-eng/book/">Reading edition</a></nav><p class="menu-reading-progress">Project milestones <span data-progress-label>0 / 48</span></p></div><nav class="menu-chapters" aria-label="All chapters"><p class="nav-group">01 · Foundations</p><a class="chapter-link" href="/agentic-eng/chapters/experimentation/"  data-chapter="experimentation"><span class="chapter-number">01</span><span>Experimentation</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/engineering-foundations/"  data-chapter="engineering-foundations"><span class="chapter-number">02</span><span>Engineering foundations</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/jobs-and-events/"  data-chapter="jobs-and-events"><span class="chapter-number">03</span><span>Jobs &amp; events</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">02 · Orchestration</p><a class="chapter-link" href="/agentic-eng/chapters/llm-gateways/"  data-chapter="llm-gateways"><span class="chapter-number">04</span><span>LLM gateways</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/agent-design/"  data-chapter="agent-design"><span class="chapter-number">05</span><span>Agent design</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/evaluations/"  data-chapter="evaluations"><span class="chapter-number">06</span><span>Evaluations</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">03 · Runtime</p><a class="chapter-link" href="/agentic-eng/chapters/inference-infrastructure/"  data-chapter="inference-infrastructure"><span class="chapter-number">07</span><span>Inference infrastructure</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/load-testing/"  data-chapter="load-testing"><span class="chapter-number">08</span><span>Load testing</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link active" href="/agentic-eng/chapters/data-retention/" aria-current="page" data-chapter="data-retention"><span class="chapter-number">09</span><span>Data retention</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/kernels-and-performance/"  data-chapter="kernels-and-performance"><span class="chapter-number">10</span><span>Kernels &amp; performance</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">04 · Meaning &amp; economics</p><a class="chapter-link" href="/agentic-eng/chapters/ontologies/"  data-chapter="ontologies"><span class="chapter-number">11</span><span>Ontologies &amp; semantics</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/cost-of-cognition/"  data-chapter="cost-of-cognition"><span class="chapter-number">12</span><span>Cost of cognition</span><span class="completion-mark" aria-hidden="true"></span></a></nav></div>
+  <footer class="menu-footer"><span>Twelve chapters. One connected system.</span><span>Progress is saved in this browser.</span></footer>
+</dialog>
+<dialog class="search-dialog" aria-labelledby="search-title"><div class="search-heading"><h2 id="search-title">Search the field guide</h2><button type="button" data-close-search aria-label="Close search">Esc ×</button></div><label class="sr-only" for="guide-search">Search chapters, concepts, and labs</label><input id="guide-search" type="search" placeholder="Try “idempotency”, “KV cache”, or “ontology”…" autocomplete="off"><p id="search-status" aria-live="polite">Search across all 12 chapters.</p><div id="search-results"></div></dialog>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>

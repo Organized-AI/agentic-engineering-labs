@@ -1,0 +1,77 @@
+export const repo = 'https://github.com/Organized-AI/agentic-engineering-labs';
+
+const rows = [
+  ['experimentation','01-experimentation','Paired Experiment Ledger',3,'Compare two configurations on the same cases and expose regressions.',`report = compare([
+    Trial("conflict", "A", False, False, .04),
+    Trial("conflict", "B", True, False, .07),
+])
+print(report["only_b"], decision(report))`],
+  ['engineering-foundations','02-engineering-foundations','Tenant-Safe Event Service',3,'Validate contracts, enforce tenant scope, and reject stale facts.',`snapshot = service.read("org-a", "event-a")
+brief = service.make_brief(snapshot)
+service.events["event-a"].version += 1
+# Raises: source version changed
+service.save("org-a", brief)`],
+  ['jobs-and-events','03-jobs-and-events','Leased Job Runner',3,'Recover work safely with idempotency, leases, fencing, and an outbox.',`job = jobs.submit("operation-1", "build brief")
+old = jobs.claim(job, now=0)
+current = jobs.claim(job, now=11)
+# The obsolete worker is fenced out.
+jobs.complete(job, old, "stale", now=12)`],
+  ['llm-gateways','04-llm-gateways','Policy-Aware Model Router',4,'Route only to eligible endpoints and reserve spending before a call.',`endpoints = [
+    Endpoint("primary", {"internal"}, .04, "timeout"),
+    Endpoint("fallback", {"internal"}, .06),
+]
+result = route("brief", "internal", endpoints, Budget(.10))`],
+  ['agent-design','05-agent-design','Bounded Tool Agent',3,'Execute model proposals only through authorized tools and bounded loops.',`result = run_agent(
+    ScriptedModel([Proposal("tool", "read_event", {"event_id":"a"})]),
+    {"read_event": event_tool},
+    principal="org-a",
+    max_steps=4,
+)`],
+  ['evaluations','06-evaluations','Outcome Evaluation Harness',3,'Grade saved state and forbidden effects across repeated trials.',`report = evaluate(tasks, agent, trials=3)
+if not release_gate(report, minimum_rate=.80):
+    raise SystemExit("release blocked")
+print(report["accepted"], len(report["attempts"]))`],
+  ['inference-infrastructure','07-inference-infrastructure','Inference Memory Planner',3,'Estimate weights and KV cache before selecting a serving layout.',`weights = weight_bytes(8_000_000_000, 2)
+cache = kv_cache_bytes(32, 8, 128, 8192, 2, sequences=4)
+required = weights + cache
+print(fits(24 * GIB, required, headroom=.15))`],
+  ['load-testing','08-load-testing','Queueing Workload Simulator',3,'Measure queue delay, tail latency, and accepted goodput under load.',`requests = [Request(i * .1, service_time=1) for i in range(10)]
+report = simulate(requests, workers=1, deadline=2)
+print(report["p95"], report["goodput"])
+print(report["accepted"], report["attempted"])`],
+  ['data-retention','09-data-retention','Synthetic Canary Audit',3,'Find a synthetic marker across success, failure, and expiry paths.',`marker = "SYNTHETIC-CANARY-001"
+error_log.write(now=0, value="timeout " + marker)
+print(audit([error_log, job_store], marker))
+error_log.expire(now=30)
+print(audit([error_log, job_store], marker))`],
+  ['kernels-and-performance','10-kernels-and-performance','Vector Kernel Checkpoint',3,'Test partial blocks and calculate whole-system speedup honestly.',`for size in (0, 1, 7, 8, 9, 17):
+    x = list(range(size))
+    assert vector_add(x, [2] * size, 8) == [v + 2 for v in x]
+print(overall_speedup(.20, 4))  # about 1.18x`],
+  ['ontologies','11-ontologies','Source-Backed Domain Graph',3,'Resolve current approved facts with provenance and separate authorization.',`venue = resolve_venue(
+    "event-a", "org-a", event_tenants, facts, at_time=10
+)
+print(venue["label"])
+print(venue["label_source"])`],
+  ['cost-of-cognition','12-cost-of-cognition','Accepted-Outcome Cost Ledger',3,'Include failed attempts, review time, and utilization in unit economics.',`report = outcome_cost(attempts, reviewer_hourly_cost=60)
+print(report["cost_per_accepted"])
+print(break_even(
+    fixed_cost=2000, managed_unit=.05, self_variable_unit=.01
+))`],
+];
+
+export const projects = rows.map(([slug,path,title,tests,outcome,code]) => ({
+  slug,path,title,tests,outcome,code,
+  url:`${repo}/tree/main/projects/${path}`,
+  starter:`${repo}/blob/main/projects/${path}/starter.py`,
+  solution:`${repo}/blob/main/projects/${path}/solution.py`,
+  testFile:`${repo}/blob/main/projects/${path}/test_solution.py`,
+  command:`cd projects/${path}\npython3 -m unittest -v test_solution.py\npython3 solution.py`,
+}));
+
+export const milestones = [
+  ['read','Read & explain','I can explain the core invariant in my own words.'],
+  ['tests','Run the tests','I ran the project checkpoint locally.'],
+  ['challenge','Complete the challenge','I implemented or extended the starter.'],
+  ['reflect','Write a reflection','I recorded what the tests prove—and what they do not.'],
+].map(([id,label,description])=>({id,label,description}));

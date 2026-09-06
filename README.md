@@ -24,6 +24,23 @@ python3 scripts/test_all.py
 The current reference suite contains **37 tests across 12 projects**. GitHub
 Actions runs the same structure and test commands on every push and pull request.
 
+## Guide website source
+
+The complete source for [guide.organizedai.vip/agentic-eng](https://guide.organizedai.vip/agentic-eng/)
+is versioned in [`guide-site/`](guide-site/). It includes chapter Markdown,
+static-site source, build and verification scripts, generated deployment assets,
+research audit records, local font licenses, and the Cloudflare Worker config.
+
+```sh
+cd guide-site
+npm ci
+npm run build
+npm run check
+```
+
+`node_modules/` and `.wrangler/` are intentionally excluded because they are
+reproducible dependency caches and machine-local Cloudflare state.
+
 Run one project:
 
 ```sh

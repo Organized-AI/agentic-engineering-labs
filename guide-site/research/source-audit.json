@@ -1,0 +1,170 @@
+[
+  {
+    "id": "sqs",
+    "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html",
+    "resolvedURL": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html",
+    "status": 200,
+    "title": "Amazon SQS standard queues - Amazon Simple Queue Service",
+    "checkedAt": "2026-09-05T20:11:24.488Z"
+  },
+  {
+    "id": "outbox",
+    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html",
+    "resolvedURL": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html",
+    "status": 200,
+    "title": "Transactional outbox pattern - AWS Prescriptive Guidance",
+    "checkedAt": "2026-09-05T20:11:24.667Z"
+  },
+  {
+    "id": "idempotency",
+    "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+    "resolvedURL": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+    "status": 200,
+    "title": "references-details-empty",
+    "checkedAt": "2026-09-05T20:11:24.701Z"
+  },
+  {
+    "id": "agents",
+    "url": "https://www.anthropic.com/engineering/building-effective-agents",
+    "resolvedURL": "https://www.anthropic.com/engineering/building-effective-agents",
+    "status": 200,
+    "title": "Building Effective AI Agents \\ Anthropic",
+    "checkedAt": "2026-09-05T20:11:24.786Z"
+  },
+  {
+    "id": "rls",
+    "url": "https://www.postgresql.org/docs/current/ddl-rowsecurity.html",
+    "resolvedURL": "https://www.postgresql.org/docs/current/ddl-rowsecurity.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 18: 5.9. Row Security Policies",
+    "checkedAt": "2026-09-05T20:11:24.873Z"
+  },
+  {
+    "id": "postgres",
+    "url": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "resolvedURL": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "status": 200,
+    "title": "PostgreSQL: Documentation: 18: 13.2. Transaction Isolation",
+    "checkedAt": "2026-09-05T20:11:24.895Z"
+  },
+  {
+    "id": "evals",
+    "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    "resolvedURL": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    "status": 200,
+    "title": "Demystifying evals for AI agents \\ Anthropic",
+    "checkedAt": "2026-09-05T20:11:24.930Z"
+  },
+  {
+    "id": "litellm",
+    "url": "https://docs.litellm.ai/docs/",
+    "resolvedURL": "https://docs.litellm.ai/docs/",
+    "status": 200,
+    "title": "Getting Started | liteLLM",
+    "checkedAt": "2026-09-05T20:11:25.016Z"
+  },
+  {
+    "id": "routing",
+    "url": "https://docs.litellm.ai/docs/routing",
+    "resolvedURL": "https://docs.litellm.ai/docs/routing",
+    "status": 200,
+    "title": "Router - Load Balancing | liteLLM",
+    "checkedAt": "2026-09-05T20:11:25.158Z"
+  },
+  {
+    "id": "otel",
+    "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+    "resolvedURL": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+    "status": 200,
+    "title": "Moved: Generative AI semantic conventions | OpenTelemetry",
+    "checkedAt": "2026-09-05T20:11:25.404Z"
+  },
+  {
+    "id": "injection",
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html",
+    "resolvedURL": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html",
+    "status": 200,
+    "title": "LLM Prompt Injection Prevention - OWASP Cheat Sheet Series",
+    "checkedAt": "2026-09-05T20:11:25.417Z"
+  },
+  {
+    "id": "vllm-metrics",
+    "url": "https://docs.vllm.ai/en/stable/usage/metrics/",
+    "resolvedURL": "https://docs.vllm.ai/en/stable/usage/metrics/",
+    "status": 200,
+    "title": "Production Metrics - vLLM",
+    "checkedAt": "2026-09-05T20:11:25.513Z"
+  },
+  {
+    "id": "paged-attention",
+    "url": "https://arxiv.org/abs/2309.06180",
+    "resolvedURL": "https://arxiv.org/abs/2309.06180",
+    "status": 200,
+    "title": "[2309.06180] Efficient Memory Management for Large Language Model Serving with PagedAttention",
+    "checkedAt": "2026-09-05T20:11:25.562Z"
+  },
+  {
+    "id": "vllm-parallel",
+    "url": "https://docs.vllm.ai/en/stable/serving/parallelism_scaling/",
+    "resolvedURL": "https://docs.vllm.ai/en/stable/serving/parallelism_scaling/",
+    "status": 200,
+    "title": "Parallelism and Scaling - vLLM",
+    "checkedAt": "2026-09-05T20:11:25.669Z"
+  },
+  {
+    "id": "vllm-bench",
+    "url": "https://docs.vllm.ai/en/stable/benchmarking/cli/",
+    "resolvedURL": "https://docs.vllm.ai/en/stable/benchmarking/cli/",
+    "status": 200,
+    "title": "Benchmark CLI - vLLM",
+    "checkedAt": "2026-09-05T20:11:25.701Z"
+  },
+  {
+    "id": "triton",
+    "url": "https://triton-lang.org/main/getting-started/tutorials/01-vector-add.html",
+    "resolvedURL": "https://triton-lang.org/main/getting-started/tutorials/01-vector-add.html",
+    "status": 200,
+    "title": "Vector Addition &mdash; Triton  documentation",
+    "checkedAt": "2026-09-05T20:11:25.804Z"
+  },
+  {
+    "id": "owl",
+    "url": "https://www.w3.org/TR/owl2-overview/",
+    "resolvedURL": "https://www.w3.org/TR/owl2-overview/",
+    "status": 200,
+    "title": "OWL 2 Web Ontology Language Document Overview (Second Edition)",
+    "checkedAt": "2026-09-05T20:11:25.812Z"
+  },
+  {
+    "id": "gpu-performance",
+    "url": "https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html",
+    "resolvedURL": "https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html",
+    "status": 200,
+    "title": "Matrix Multiplication Background User&#x27;s Guide - NVIDIA Docs",
+    "checkedAt": "2026-09-05T20:11:26.145Z"
+  },
+  {
+    "id": "shacl",
+    "url": "https://www.w3.org/TR/shacl/",
+    "resolvedURL": "https://www.w3.org/TR/shacl/",
+    "status": 200,
+    "title": "Shapes Constraint Language (SHACL)",
+    "checkedAt": "2026-09-05T20:11:26.715Z"
+  },
+  {
+    "id": "retention",
+    "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
+    "resolvedURL": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
+    "status": 200,
+    "title": "API and data retention - Claude Platform Docs",
+    "checkedAt": "2026-09-05T20:11:26.729Z"
+  },
+  {
+    "id": "finops",
+    "url": "https://www.finops.org/wg/finops-for-ai/",
+    "resolvedURL": "https://www.finops.org/wg/finops-for-ai-overview/",
+    "status": 200,
+    "title": "FinOps for AI Overview",
+    "checkedAt": "2026-09-05T20:11:26.986Z"
+  }
+]

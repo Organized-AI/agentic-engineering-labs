@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Arrival patterns, queueing, tail latency, goodput, reproducibility, and defensible capacity reports."><meta name="theme-color" content="#fffcf4">
+<title>08. Load testing · Organized AI</title><link rel="canonical" href="https://guide.organizedai.vip/agentic-eng/chapters/load-testing/">
+<meta property="og:title" content="08. Load testing"><meta property="og:description" content="Arrival patterns, queueing, tail latency, goodput, reproducibility, and defensible capacity reports."><meta property="og:type" content="article"><meta property="og:url" content="https://guide.organizedai.vip/agentic-eng/chapters/load-testing/">
+<link rel="icon" href="/agentic-eng/assets/favicon.svg?v=a96d215233c7" type="image/svg+xml">
+<link rel="preload" href="/agentic-eng/assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/agentic-eng/assets/fonts/jetbrains-mono-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/agentic-eng/assets/style.css?v=a96d215233c7"><link rel="stylesheet" href="/agentic-eng/assets/editorial.css?v=a96d215233c7">
+<script src="/agentic-eng/assets/app.js?v=a96d215233c7" defer></script><script src="/agentic-eng/assets/editorial.js?v=a96d215233c7" defer></script>
+</head><body class="chapter-page" data-current="load-testing">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="/agentic-eng/">ORGANIZED <span class="brand-yellow">AI</span></a>
+  <nav class="header-nav" aria-label="Primary navigation"><a href="/agentic-eng/#curriculum">Curriculum</a><a href="/agentic-eng/progress/">Progress</a><a href="/agentic-eng/#practice">The practice</a><a href="/agentic-eng/sources/">Sources</a></nav>
+  <div class="topbar-actions"><button class="search-trigger" type="button" aria-haspopup="dialog"><span>Search</span><kbd>/</kbd></button><button class="menu-trigger" aria-label="Open chapter menu" aria-expanded="false" aria-controls="chapter-menu" aria-haspopup="dialog" type="button">Menu</button></div>
+</header>
+<aside class="sidebar" id="sidebar">
+  <a class="sidebar-title" href="/agentic-eng/">AGENTIC ENGINEERING<span>A field guide to useful systems</span></a>
+  <div class="progress-box"><div><span>YOUR PROGRESS</span><span data-progress-label>0 / 48</span></div><progress max="48" value="0" aria-label="Hands-on milestones complete"></progress><p><a href="/agentic-eng/progress/">Open progress dashboard →</a></p></div>
+  <nav aria-label="Guide chapters"><p class="nav-group">01 · Foundations</p><a class="chapter-link" href="/agentic-eng/chapters/experimentation/"  data-chapter="experimentation"><span class="chapter-number">01</span><span>Experimentation</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/engineering-foundations/"  data-chapter="engineering-foundations"><span class="chapter-number">02</span><span>Engineering foundations</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/jobs-and-events/"  data-chapter="jobs-and-events"><span class="chapter-number">03</span><span>Jobs &amp; events</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">02 · Orchestration</p><a class="chapter-link" href="/agentic-eng/chapters/llm-gateways/"  data-chapter="llm-gateways"><span class="chapter-number">04</span><span>LLM gateways</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/agent-design/"  data-chapter="agent-design"><span class="chapter-number">05</span><span>Agent design</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/evaluations/"  data-chapter="evaluations"><span class="chapter-number">06</span><span>Evaluations</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">03 · Runtime</p><a class="chapter-link" href="/agentic-eng/chapters/inference-infrastructure/"  data-chapter="inference-infrastructure"><span class="chapter-number">07</span><span>Inference infrastructure</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link active" href="/agentic-eng/chapters/load-testing/" aria-current="page" data-chapter="load-testing"><span class="chapter-number">08</span><span>Load testing</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/data-retention/"  data-chapter="data-retention"><span class="chapter-number">09</span><span>Data retention</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/kernels-and-performance/"  data-chapter="kernels-and-performance"><span class="chapter-number">10</span><span>Kernels &amp; performance</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">04 · Meaning &amp; economics</p><a class="chapter-link" href="/agentic-eng/chapters/ontologies/"  data-chapter="ontologies"><span class="chapter-number">11</span><span>Ontologies &amp; semantics</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/cost-of-cognition/"  data-chapter="cost-of-cognition"><span class="chapter-number">12</span><span>Cost of cognition</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">05 · Put it into practice</p><a class="extra-link" href="/agentic-eng/progress/" >Hands-on progress</a><a class="extra-link" href="/agentic-eng/capstone/" >Capstone & starter lab ↗</a><a class="extra-link" href="/agentic-eng/glossary/">Glossary</a><a class="extra-link" href="/agentic-eng/sources/">Sources & editorial notes</a><a class="extra-link" href="/agentic-eng/book/">Full reading edition</a></nav>
+  <div class="sidebar-footer">EDITION 01 <span>SEP 2026</span></div>
+</aside>
+<div class="page-layout"><main id="main" tabindex="-1"><header class="chapter-header"><div class="eyebrow">03 · Runtime <span class="slash">/</span> CHAPTER 08</div><h1>Load testing</h1><p class="chapter-subtitle">Find the useful capacity limit.</p><div class="chapter-meta"><span>5 MIN READ</span><span>ADVANCED</span><span>3 RUNNABLE TESTS</span></div></header><article class="prose"><blockquote>
+<p><strong>The question:</strong> How much useful work can the system complete before latency, reliability, or quality becomes unacceptable?</p>
+</blockquote>
+<p>A performance test is not a screenshot of tokens per second. It is a reproducible workload, a declared measurement boundary, a configuration, and an interpretation. The most useful capacity number is the load at which the complete service still meets its requirements.</p>
+<p>Use synthetic or approved data, set an explicit spending cap, and define stop conditions before testing paid endpoints or rented hardware.</p>
+<h2 id="the-mental-model">The mental model</h2>
+<p>Separate latency, throughput, and <strong>goodput</strong>. Latency describes elapsed time for a request. Throughput counts completed work per unit time. In this guide, goodput means accepted outcomes completed within the required constraints per unit time.</p>
+<p>A system can increase throughput by producing shorter, lower-quality answers. It can improve reported latency by excluding failed requests. Goodput resists those shortcuts only if acceptance rules and the denominator are fixed.</p>
+<p>Measure at the client for user experience and at internal stages for diagnosis. Do not subtract queueing from the headline latency simply because it occurs outside the model runtime.</p>
+<h2 id="know-the-token-metrics">Know the token metrics</h2>
+<p>vLLM’s benchmark documentation distinguishes these measurements and cautions that metric names alone do not ensure comparability across tools. <a href="/agentic-eng/sources/#vllm-bench">Benchmark reference</a></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What it tells you</th>
+<th>What it does not tell you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time to first token/output</td>
+<td>Delay until the first streamed response reaches the client</td>
+<td>Time until a usable answer is complete</td>
+</tr>
+<tr>
+<td>Inter-token or inter-output latency</td>
+<td>Gaps between streamed outputs</td>
+<td>Whole-task latency or answer quality</td>
+</tr>
+<tr>
+<td>Time per output token</td>
+<td>A per-request generation-rate measure under the tool’s definition</td>
+<td>Identical behavior to the distribution of all inter-output gaps</td>
+</tr>
+<tr>
+<td>End-to-end latency</td>
+<td>Total elapsed request time at the measurement boundary</td>
+<td>Which internal stage caused the delay</td>
+</tr>
+<tr>
+<td>Output-token throughput</td>
+<td>Generated output per second</td>
+<td>Accepted business outcomes per second</td>
+</tr>
+</tbody>
+</table>
+<p>Record streaming chunk behavior and formulas. A chunk can contain multiple tokens, so a gap between chunks is not necessarily a gap between individual tokens.</p>
+<h2 id="use-a-realistic-workload-shape">Use a realistic workload shape</h2>
+<p>Construct a distribution of input length, output length, tool usage, and arrival rate. For event briefs, some requests may have a short agenda while others involve many sessions and unresolved records. A test using only short prompts may miss the workload that causes saturation.</p>
+<p>A closed-loop test sends another request after a previous one finishes; it is useful for controlled concurrency. An open-loop test schedules arrivals independently of completion; it better exposes backlog growth when demand continues during slow responses. Label which you use.</p>
+<p>Separate cold starts, warm operation, and cache-assisted operation. If cache hits make the benchmark faster, record the hit pattern and check whether that pattern resembles production. Do not compare a cold baseline to a warm candidate as if the runtime alone caused the difference.</p>
+<h2 id="worked-example-capacity-versus-goodput">Worked example: capacity versus goodput</h2>
+<p>Consider hypothetical 60-second runs on the same task mix:</p>
+<table>
+<thead>
+<tr>
+<th>Offered load</th>
+<th class="align-right">Completed</th>
+<th class="align-right">Accepted within deadline</th>
+<th class="align-right">Goodput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low</td>
+<td class="align-right">120</td>
+<td class="align-right">114</td>
+<td class="align-right">1.90 accepted tasks/s</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td class="align-right">240</td>
+<td class="align-right">220</td>
+<td class="align-right">3.67 accepted tasks/s</td>
+</tr>
+<tr>
+<td>High</td>
+<td class="align-right">300</td>
+<td class="align-right">170</td>
+<td class="align-right">2.83 accepted tasks/s</td>
+</tr>
+</tbody>
+</table>
+<p>The highest completed count does not produce the highest goodput. At high load, queue delay or other failures may cause more work to miss the requirement. Inspect queue time, running requests, cache pressure, and per-stage latency to find the cause. <a href="/agentic-eng/sources/#vllm-metrics">Serving metrics</a></p>
+<p>For a stable system, average in-flight work is approximately arrival rate multiplied by average time in the system. Use that relationship as a consistency check, not a p95 estimator or a model of a continuously growing queue. If arrivals exceed sustainable completions, the steady-state assumption no longer describes the run.</p>
+<h2 id="report-distributions-and-failures">Report distributions and failures</h2>
+<p>Show p50 and p95 end-to-end latency with sample size and test duration. Do not make confident tail claims from a tiny sample. Report rejected, timed-out, cancelled, and malformed requests separately, and explain whether they are included in each metric.</p>
+<p>Keep the offered rate, achieved completion rate, and acceptance rate distinct. Include the client machine and network boundary when comparing different environments. A local benchmark and a remote benchmark may measure different transport costs.</p>
+<p>Pin runtime, model, tokenizer, quantization, prompt template, limits, hardware, and parallelism configuration. Without those details, a result is difficult to reproduce or compare after an upgrade.</p>
+<h2 id="lab-find-the-saturation-knee">Lab: find the saturation knee</h2>
+<ol>
+<li>Select a bounded sample of short, typical, and long event requests.</li>
+<li>Run a low-load baseline and check that outputs still meet the quality gate.</li>
+<li>Increase offered load in steps, holding the task mix constant.</li>
+<li>At each step record end-to-end latency, queue delay, completions, failures, and goodput.</li>
+<li>Repeat near the point where queue delay or missed deadlines grows sharply.</li>
+<li>Add a burst test and one controlled dependency failure.</li>
+<li>Publish the largest tested operating region that met all requirements, plus its headroom assumptions.</li>
+</ol>
+<p>Your report should include raw results and the exact command/configuration. The output is an operating envelope, not a universal claim about a GPU or model.</p>
+<h2 id="failure-drills">Failure drills</h2>
+<p>Throttle the model dependency. Mix long and short requests. Force cold starts. Make the load generator itself CPU-bound and verify that you notice. Stop new arrivals and observe how long the queue drains. Confirm that spending and error stop conditions actually end the test.</p>
+<h2 id="ship-gate">Ship gate</h2>
+<p>The capacity claim includes workload distribution, sample size, measurement boundaries, failures, quality, and configuration. You know the saturation point and how admission control protects users before reaching it. Next, audit what these requests leave behind in <a href="/agentic-eng/chapters/data-retention/">data retention</a>.</p>
+</article><section class="companion-project" id="companion-project"><div class="project-heading"><div><p class="eyebrow">HANDS-ON PROJECT 08</p><h2>Queueing Workload Simulator</h2><p>Measure queue delay, tail latency, and accepted goodput under load.</p></div><span class="test-count">3 TESTS</span></div><div class="project-grid"><div><h3>Run the checkpoint</h3><pre><code>cd projects/08-load-testing
+python3 -m unittest -v test_solution.py
+python3 solution.py</code></pre><div class="project-links"><a href="https://github.com/Organized-AI/agentic-engineering-labs/tree/main/projects/08-load-testing" target="_blank" rel="noopener noreferrer">Open project ↗</a><a href="https://github.com/Organized-AI/agentic-engineering-labs/blob/main/projects/08-load-testing/starter.py" target="_blank" rel="noopener noreferrer">Starter</a><a href="https://github.com/Organized-AI/agentic-engineering-labs/blob/main/projects/08-load-testing/solution.py" target="_blank" rel="noopener noreferrer">Solution</a><a href="https://github.com/Organized-AI/agentic-engineering-labs/blob/main/projects/08-load-testing/test_solution.py" target="_blank" rel="noopener noreferrer">Tests</a></div></div><div><h3>Worked code</h3><pre><code>requests = [Request(i * .1, service_time=1) for i in range(10)]
+report = simulate(requests, workers=1, deadline=2)
+print(report[&quot;p95&quot;], report[&quot;goodput&quot;])
+print(report[&quot;accepted&quot;], report[&quot;attempted&quot;])</code></pre></div></div><div class="milestone-panel"><div><p class="eyebrow">PROJECT PROGRESS</p><p>Complete all four milestones to finish this chapter.</p></div><div class="milestone-grid"><label class="milestone"><input type="checkbox" data-project="load-testing" data-milestone="read"><span><strong>Read &amp; explain</strong>I can explain the core invariant in my own words.</span></label><label class="milestone"><input type="checkbox" data-project="load-testing" data-milestone="tests"><span><strong>Run the tests</strong>I ran the project checkpoint locally.</span></label><label class="milestone"><input type="checkbox" data-project="load-testing" data-milestone="challenge"><span><strong>Complete the challenge</strong>I implemented or extended the starter.</span></label><label class="milestone"><input type="checkbox" data-project="load-testing" data-milestone="reflect"><span><strong>Write a reflection</strong>I recorded what the tests prove—and what they do not.</span></label></div></div></section><section class="chapter-finish"><div><span class="eyebrow">MAKE IT STICK</span><h2>Can you pass the ship gate?</h2><p>Complete the reading, tests, challenge, and reflection.</p></div><button class="button primary" type="button" data-complete="load-testing" aria-pressed="false">Complete all milestones</button></section><nav class="chapter-pagination" aria-label="Adjacent chapters"><a href="/agentic-eng/chapters/inference-infrastructure/"><span>← PREVIOUS</span><strong>Inference infrastructure</strong></a><a href="/agentic-eng/chapters/data-retention/"><span>NEXT →</span><strong>Data retention</strong></a></nav></main><aside class="page-toc" aria-label="On this page"><p>ON THIS PAGE</p><nav><a href="#the-mental-model">The mental model</a><a href="#know-the-token-metrics">Know the token metrics</a><a href="#use-a-realistic-workload-shape">Use a realistic workload shape</a><a href="#worked-example-capacity-versus-goodput">Worked example: capacity versus goodput</a><a href="#report-distributions-and-failures">Report distributions and failures</a><a href="#lab-find-the-saturation-knee">Lab: find the saturation knee</a><a href="#failure-drills">Failure drills</a><a href="#ship-gate">Ship gate</a></nav><a class="back-top" href="#main">Back to top ↑</a></aside></div>
+<footer class="site-footer"><span>Organized AI / Agentic Engineering</span><span>Reviewed September 5, 2026 · <a href="/agentic-eng/sources/">Evidence & scope</a></span></footer>
+<dialog class="chapter-menu" id="chapter-menu" aria-label="Chapter menu">
+  <header class="menu-header"><a class="brand" href="/agentic-eng/">ORGANIZED <span class="brand-yellow">AI</span></a><button class="menu-close" type="button" aria-label="Close chapter menu" autofocus>Close <span aria-hidden="true">×</span></button></header>
+  <div class="menu-layout"><div class="menu-overview"><p class="eyebrow">Agentic Engineering / Field guide</p><nav aria-label="Guide resources"><a href="/agentic-eng/">Overview</a><a href="/agentic-eng/progress/">Your progress</a><a href="/agentic-eng/capstone/">The capstone</a><a href="/agentic-eng/glossary/">Glossary</a><a href="/agentic-eng/sources/">The sources</a><a href="/agentic-eng/book/">Reading edition</a></nav><p class="menu-reading-progress">Project milestones <span data-progress-label>0 / 48</span></p></div><nav class="menu-chapters" aria-label="All chapters"><p class="nav-group">01 · Foundations</p><a class="chapter-link" href="/agentic-eng/chapters/experimentation/"  data-chapter="experimentation"><span class="chapter-number">01</span><span>Experimentation</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/engineering-foundations/"  data-chapter="engineering-foundations"><span class="chapter-number">02</span><span>Engineering foundations</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/jobs-and-events/"  data-chapter="jobs-and-events"><span class="chapter-number">03</span><span>Jobs &amp; events</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">02 · Orchestration</p><a class="chapter-link" href="/agentic-eng/chapters/llm-gateways/"  data-chapter="llm-gateways"><span class="chapter-number">04</span><span>LLM gateways</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/agent-design/"  data-chapter="agent-design"><span class="chapter-number">05</span><span>Agent design</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/evaluations/"  data-chapter="evaluations"><span class="chapter-number">06</span><span>Evaluations</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">03 · Runtime</p><a class="chapter-link" href="/agentic-eng/chapters/inference-infrastructure/"  data-chapter="inference-infrastructure"><span class="chapter-number">07</span><span>Inference infrastructure</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link active" href="/agentic-eng/chapters/load-testing/" aria-current="page" data-chapter="load-testing"><span class="chapter-number">08</span><span>Load testing</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/data-retention/"  data-chapter="data-retention"><span class="chapter-number">09</span><span>Data retention</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/kernels-and-performance/"  data-chapter="kernels-and-performance"><span class="chapter-number">10</span><span>Kernels &amp; performance</span><span class="completion-mark" aria-hidden="true"></span></a><p class="nav-group">04 · Meaning &amp; economics</p><a class="chapter-link" href="/agentic-eng/chapters/ontologies/"  data-chapter="ontologies"><span class="chapter-number">11</span><span>Ontologies &amp; semantics</span><span class="completion-mark" aria-hidden="true"></span></a><a class="chapter-link" href="/agentic-eng/chapters/cost-of-cognition/"  data-chapter="cost-of-cognition"><span class="chapter-number">12</span><span>Cost of cognition</span><span class="completion-mark" aria-hidden="true"></span></a></nav></div>
+  <footer class="menu-footer"><span>Twelve chapters. One connected system.</span><span>Progress is saved in this browser.</span></footer>
+</dialog>
+<dialog class="search-dialog" aria-labelledby="search-title"><div class="search-heading"><h2 id="search-title">Search the field guide</h2><button type="button" data-close-search aria-label="Close search">Esc ×</button></div><label class="sr-only" for="guide-search">Search chapters, concepts, and labs</label><input id="guide-search" type="search" placeholder="Try “idempotency”, “KV cache”, or “ontology”…" autocomplete="off"><p id="search-status" aria-live="polite">Search across all 12 chapters.</p><div id="search-results"></div></dialog>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>

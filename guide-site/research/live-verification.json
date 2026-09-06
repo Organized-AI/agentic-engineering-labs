@@ -1,0 +1,264 @@
+{
+  "checkedAt": "2026-09-05T21:31:16.891Z",
+  "checks": [
+    {
+      "path": "/agentic-eng/chapters/experimentation/",
+      "status": 200,
+      "bytes": 22230,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/",
+      "status": 200,
+      "bytes": 23463,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/engineering-foundations/",
+      "status": 200,
+      "bytes": 22638,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/jobs-and-events/",
+      "status": 200,
+      "bytes": 22083,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/agent-design/",
+      "status": 200,
+      "bytes": 22210,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/llm-gateways/",
+      "status": 200,
+      "bytes": 22379,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/inference-infrastructure/",
+      "status": 200,
+      "bytes": 22615,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/load-testing/",
+      "status": 200,
+      "bytes": 22631,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/evaluations/",
+      "status": 200,
+      "bytes": 22210,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/kernels-and-performance/",
+      "status": 200,
+      "bytes": 22241,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/data-retention/",
+      "status": 200,
+      "bytes": 22701,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/ontologies/",
+      "status": 200,
+      "bytes": 22699,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/capstone/",
+      "status": 200,
+      "bytes": 20091,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/progress/",
+      "status": 200,
+      "bytes": 28421,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/cost-of-cognition/",
+      "status": 200,
+      "bytes": 22641,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/glossary/",
+      "status": 200,
+      "bytes": 17833,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/app.js",
+      "status": 200,
+      "bytes": 8845,
+      "matchesBuild": true,
+      "contentType": "text/javascript",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/book/",
+      "status": 200,
+      "bytes": 135511,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/style.css",
+      "status": 200,
+      "bytes": 19828,
+      "matchesBuild": true,
+      "contentType": "text/css",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/sources/",
+      "status": 200,
+      "bytes": 20762,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/downloads/lab/pipeline.py",
+      "status": 200,
+      "bytes": 9270,
+      "matchesBuild": true,
+      "contentType": "text/plain; charset=utf-8",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/downloads/lab/test_pipeline.py",
+      "status": 200,
+      "bytes": 5050,
+      "matchesBuild": true,
+      "contentType": "text/plain; charset=utf-8",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/downloads/agentic-engineering.md",
+      "status": 200,
+      "bytes": 104291,
+      "matchesBuild": true,
+      "contentType": "text/markdown; charset=utf-8",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/search-index.json",
+      "status": 200,
+      "bytes": 79232,
+      "matchesBuild": true,
+      "contentType": "application/json",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/favicon.svg",
+      "status": 200,
+      "bytes": 242,
+      "matchesBuild": true,
+      "contentType": "image/svg+xml",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/editorial.js",
+      "status": 200,
+      "bytes": 4419,
+      "matchesBuild": true,
+      "contentType": "text/javascript",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/editorial.css",
+      "status": 200,
+      "bytes": 32590,
+      "matchesBuild": true,
+      "contentType": "text/css",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/fonts/inter-latin-variable.woff2",
+      "status": 200,
+      "bytes": 48256,
+      "matchesBuild": true,
+      "contentType": "font/woff2",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/fonts/jetbrains-mono-latin-variable.woff2",
+      "status": 200,
+      "bytes": 31432,
+      "matchesBuild": true,
+      "contentType": "font/woff2",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng",
+      "status": 308,
+      "redirect": "https://guide.organizedai.vip/agentic-eng/",
+      "pass": true
+    },
+    {
+      "path": "/agentic-eng?source=verification",
+      "status": 308,
+      "redirect": "https://guide.organizedai.vip/agentic-eng/?source=verification",
+      "pass": true
+    },
+    {
+      "path": "/agentic-eng/not-a-chapter/",
+      "status": 404,
+      "pass": true
+    },
+    {
+      "path": "/harness",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "path": "/agentic-engineering-other",
+      "status": 404,
+      "pass": true
+    }
+  ]
+}
