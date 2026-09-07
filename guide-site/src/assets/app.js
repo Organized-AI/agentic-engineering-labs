@@ -29,8 +29,8 @@
   const updateProgress=()=>{
     const total=totalCount();
     document.querySelectorAll('[data-chapter]').forEach(el=>el.classList.toggle('completed',projectCount(el.dataset.chapter)===4));
-    document.querySelectorAll('progress').forEach(el=>{el.max=48;el.value=total;});
-    document.querySelectorAll('[data-progress-label]').forEach(el=>el.textContent=`${total} / 48`);
+    document.querySelectorAll('progress').forEach(el=>{el.max=124;el.value=total;});
+    document.querySelectorAll('[data-progress-label]').forEach(el=>el.textContent=`${total} / 124`);
     document.querySelectorAll('[data-progress-total]').forEach(el=>el.textContent=String(total));
     document.querySelectorAll('[data-project-count]').forEach(el=>el.textContent=`${projectCount(el.dataset.projectCount)} / 4`);
     document.querySelectorAll('[data-milestone]').forEach(input=>{input.checked=milestoneDone(input.dataset.project,input.dataset.milestone);});

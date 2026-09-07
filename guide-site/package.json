@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node --check src/assets/app.js && node --check src/assets/editorial.js && node --check src/home.mjs && node --check scripts/serve.mjs && node scripts/check.mjs && node --test tests/worker.test.mjs && python3 -m unittest discover -s labs -p 'test_*.py'",
+    "check": "node --check src/assets/app.js && node --check src/assets/editorial.js && node --check src/assets/player.js && node --check src/home.mjs && node --check scripts/serve.mjs && node scripts/check.mjs && node --test tests/worker.test.mjs && python3 -m unittest discover -s labs -p 'test_*.py'",
     "dev": "node scripts/serve.mjs",
     "deploy": "npm run build && npm run check && wrangler deploy"
   },

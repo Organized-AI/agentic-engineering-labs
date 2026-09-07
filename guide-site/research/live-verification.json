@@ -1,26 +1,10 @@
 {
-  "checkedAt": "2026-09-05T21:31:16.891Z",
+  "checkedAt": "2026-09-06T14:47:51.087Z",
   "checks": [
-    {
-      "path": "/agentic-eng/chapters/experimentation/",
-      "status": 200,
-      "bytes": 22230,
-      "matchesBuild": true,
-      "contentType": "text/html",
-      "csp": true
-    },
     {
       "path": "/agentic-eng/",
       "status": 200,
-      "bytes": 23463,
-      "matchesBuild": true,
-      "contentType": "text/html",
-      "csp": true
-    },
-    {
-      "path": "/agentic-eng/chapters/engineering-foundations/",
-      "status": 200,
-      "bytes": 22638,
+      "bytes": 23538,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
@@ -28,15 +12,23 @@
     {
       "path": "/agentic-eng/chapters/jobs-and-events/",
       "status": 200,
-      "bytes": 22083,
+      "bytes": 22158,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
     },
     {
-      "path": "/agentic-eng/chapters/agent-design/",
+      "path": "/agentic-eng/chapters/experimentation/",
       "status": 200,
-      "bytes": 22210,
+      "bytes": 22305,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/engineering-foundations/",
+      "status": 200,
+      "bytes": 22713,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
@@ -44,23 +36,15 @@
     {
       "path": "/agentic-eng/chapters/llm-gateways/",
       "status": 200,
-      "bytes": 22379,
+      "bytes": 22454,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
     },
     {
-      "path": "/agentic-eng/chapters/inference-infrastructure/",
+      "path": "/agentic-eng/chapters/agent-design/",
       "status": 200,
-      "bytes": 22615,
-      "matchesBuild": true,
-      "contentType": "text/html",
-      "csp": true
-    },
-    {
-      "path": "/agentic-eng/chapters/load-testing/",
-      "status": 200,
-      "bytes": 22631,
+      "bytes": 22285,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
@@ -68,15 +52,15 @@
     {
       "path": "/agentic-eng/chapters/evaluations/",
       "status": 200,
-      "bytes": 22210,
+      "bytes": 22285,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
     },
     {
-      "path": "/agentic-eng/chapters/kernels-and-performance/",
+      "path": "/agentic-eng/chapters/inference-infrastructure/",
       "status": 200,
-      "bytes": 22241,
+      "bytes": 22690,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
@@ -84,7 +68,23 @@
     {
       "path": "/agentic-eng/chapters/data-retention/",
       "status": 200,
-      "bytes": 22701,
+      "bytes": 22776,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/load-testing/",
+      "status": 200,
+      "bytes": 22706,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/chapters/kernels-and-performance/",
+      "status": 200,
+      "bytes": 22316,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
@@ -92,23 +92,7 @@
     {
       "path": "/agentic-eng/chapters/ontologies/",
       "status": 200,
-      "bytes": 22699,
-      "matchesBuild": true,
-      "contentType": "text/html",
-      "csp": true
-    },
-    {
-      "path": "/agentic-eng/capstone/",
-      "status": 200,
-      "bytes": 20091,
-      "matchesBuild": true,
-      "contentType": "text/html",
-      "csp": true
-    },
-    {
-      "path": "/agentic-eng/progress/",
-      "status": 200,
-      "bytes": 28421,
+      "bytes": 22774,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
@@ -116,7 +100,23 @@
     {
       "path": "/agentic-eng/chapters/cost-of-cognition/",
       "status": 200,
-      "bytes": 22641,
+      "bytes": 22716,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/progress/",
+      "status": 200,
+      "bytes": 28496,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/capstone/",
+      "status": 200,
+      "bytes": 20166,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
@@ -124,23 +124,15 @@
     {
       "path": "/agentic-eng/glossary/",
       "status": 200,
-      "bytes": 17833,
+      "bytes": 17908,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
     },
     {
-      "path": "/agentic-eng/assets/app.js",
+      "path": "/agentic-eng/sources/",
       "status": 200,
-      "bytes": 8845,
-      "matchesBuild": true,
-      "contentType": "text/javascript",
-      "csp": true
-    },
-    {
-      "path": "/agentic-eng/book/",
-      "status": 200,
-      "bytes": 135511,
+      "bytes": 20837,
       "matchesBuild": true,
       "contentType": "text/html",
       "csp": true
@@ -154,35 +146,11 @@
       "csp": true
     },
     {
-      "path": "/agentic-eng/sources/",
+      "path": "/agentic-eng/assets/app.js",
       "status": 200,
-      "bytes": 20762,
+      "bytes": 8845,
       "matchesBuild": true,
-      "contentType": "text/html",
-      "csp": true
-    },
-    {
-      "path": "/agentic-eng/downloads/lab/pipeline.py",
-      "status": 200,
-      "bytes": 9270,
-      "matchesBuild": true,
-      "contentType": "text/plain; charset=utf-8",
-      "csp": true
-    },
-    {
-      "path": "/agentic-eng/downloads/lab/test_pipeline.py",
-      "status": 200,
-      "bytes": 5050,
-      "matchesBuild": true,
-      "contentType": "text/plain; charset=utf-8",
-      "csp": true
-    },
-    {
-      "path": "/agentic-eng/downloads/agentic-engineering.md",
-      "status": 200,
-      "bytes": 104291,
-      "matchesBuild": true,
-      "contentType": "text/markdown; charset=utf-8",
+      "contentType": "text/javascript",
       "csp": true
     },
     {
@@ -194,6 +162,30 @@
       "csp": true
     },
     {
+      "path": "/agentic-eng/downloads/lab/pipeline.py",
+      "status": 200,
+      "bytes": 9270,
+      "matchesBuild": true,
+      "contentType": "text/plain; charset=utf-8",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/book/",
+      "status": 200,
+      "bytes": 184174,
+      "matchesBuild": true,
+      "contentType": "text/html",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/downloads/lab/test_pipeline.py",
+      "status": 200,
+      "bytes": 5050,
+      "matchesBuild": true,
+      "contentType": "text/plain; charset=utf-8",
+      "csp": true
+    },
+    {
       "path": "/agentic-eng/assets/favicon.svg",
       "status": 200,
       "bytes": 242,
@@ -202,19 +194,27 @@
       "csp": true
     },
     {
-      "path": "/agentic-eng/assets/editorial.js",
-      "status": 200,
-      "bytes": 4419,
-      "matchesBuild": true,
-      "contentType": "text/javascript",
-      "csp": true
-    },
-    {
       "path": "/agentic-eng/assets/editorial.css",
       "status": 200,
       "bytes": 32590,
       "matchesBuild": true,
       "contentType": "text/css",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/downloads/agentic-engineering.md",
+      "status": 200,
+      "bytes": 148153,
+      "matchesBuild": true,
+      "contentType": "text/markdown; charset=utf-8",
+      "csp": true
+    },
+    {
+      "path": "/agentic-eng/assets/editorial.js",
+      "status": 200,
+      "bytes": 4419,
+      "matchesBuild": true,
+      "contentType": "text/javascript",
       "csp": true
     },
     {

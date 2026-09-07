@@ -21,7 +21,7 @@ cd agentic-engineering-labs
 python3 scripts/test_all.py
 ```
 
-The current reference suite contains **37 tests across 12 projects**. GitHub
+The current reference suite contains **70 tests across 23 projects**. GitHub
 Actions runs the same structure and test commands on every push and pull request.
 
 ## Guide website source
@@ -71,6 +71,17 @@ result.
 | 10 | [Kernels & performance](https://guide.organizedai.vip/agentic-eng/chapters/kernels-and-performance/) | [Vector-kernel benchmark](projects/10-kernels-and-performance/) | Prove correctness before claiming speedup |
 | 11 | [Ontologies & semantics](https://guide.organizedai.vip/agentic-eng/chapters/ontologies/) | [Source-backed domain graph](projects/11-ontologies/) | Resolve canonical facts with provenance |
 | 12 | [Cost of cognition](https://guide.organizedai.vip/agentic-eng/chapters/cost-of-cognition/) | [Accepted-outcome ledger](projects/12-cost-of-cognition/) | Include retries, review, and utilization |
+| 13 | [Agentic security](https://guide.organizedai.vip/agentic-eng/chapters/agentic-security/) | [Injection gauntlet](projects/13-agentic-security/) | Reject tainted effects and rug-pulled tools |
+| 14 | [Agent identity](https://guide.organizedai.vip/agentic-eng/chapters/agent-identity/) | [Identity-aware tool gateway](projects/14-agent-identity/) | Verify subject, scope, and audience per call |
+| 15 | [Human oversight operations](https://guide.organizedai.vip/agentic-eng/chapters/human-oversight/) | [Approval queue state machine](projects/15-human-oversight/) | Exact, live, single-use approvals with audit first |
+| 16 | [Context & memory systems](https://guide.organizedai.vip/agentic-eng/chapters/context-and-memory/) | [Typed memory store](projects/16-context-and-memory/) | Keep memory types, sources, and constraints separate |
+| 17 | [Evals, traces & logs](https://guide.organizedai.vip/agentic-eng/chapters/evals-traces-logs/) | [Three-signal debugger](projects/17-evals-traces-logs/) | Join logs, spans, and scores on one task id |
+| 18 | [Guardrails in the request path](https://guide.organizedai.vip/agentic-eng/chapters/guardrails/) | [Rail pipeline](projects/18-guardrails/) | Named rails, logged decisions, fail closed |
+| 19 | [Adaptation economics](https://guide.organizedai.vip/agentic-eng/chapters/adaptation-economics/) | [Adaptation lever pricer](projects/19-adaptation-economics/) | Price prompt, RAG, and fine-tune on one ledger |
+| 20 | [AI Act & governance](https://guide.organizedai.vip/agentic-eng/chapters/ai-act-governance/) | [Classification memo builder](projects/20-ai-act-governance/) | Classify the system and map duties to artifacts |
+| 21 | [Tailnets & agent networking](https://guide.organizedai.vip/agentic-eng/chapters/tailnets/) | [Mesh policy checker](projects/21-tailnets/) | Prove intended paths, deny everything else |
+| 22 | [Engineering best practices](https://guide.organizedai.vip/agentic-eng/chapters/engineering-best-practices/) | [Foundation audit](projects/22-engineering-best-practices/) | Score the classic blocks on evidence |
+| 23 | [The challenge](https://guide.organizedai.vip/agentic-eng/chapters/the-challenge/) | [Sprint ledger](projects/23-the-challenge/) | Ship an artifact at every 7/30/60/90 gate |
 
 ## Progress
 

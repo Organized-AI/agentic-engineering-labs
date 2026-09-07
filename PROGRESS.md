@@ -16,6 +16,17 @@ For each project, check the milestones only after you can explain the behavior.
 | 10 Kernels & performance | [ ] | [ ] | [ ] | [ ] |
 | 11 Ontologies & semantics | [ ] | [ ] | [ ] | [ ] |
 | 12 Cost of cognition | [ ] | [ ] | [ ] | [ ] |
+| 13 Agentic security | [ ] | [ ] | [ ] | [ ] |
+| 14 Agent identity | [ ] | [ ] | [ ] | [ ] |
+| 15 Human oversight operations | [ ] | [ ] | [ ] | [ ] |
+| 16 Context & memory systems | [ ] | [ ] | [ ] | [ ] |
+| 17 Evals, traces & logs | [ ] | [ ] | [ ] | [ ] |
+| 18 Guardrails in the request path | [ ] | [ ] | [ ] | [ ] |
+| 19 Adaptation economics | [ ] | [ ] | [ ] | [ ] |
+| 20 AI Act & governance | [ ] | [ ] | [ ] | [ ] |
+| 21 Tailnets & agent networking | [ ] | [ ] | [ ] | [ ] |
+| 22 Engineering best practices | [ ] | [ ] | [ ] | [ ] |
+| 23 The challenge | [ ] | [ ] | [ ] | [ ] |
 
 ## Reflection prompts
 

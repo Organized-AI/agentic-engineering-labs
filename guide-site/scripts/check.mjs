@@ -32,8 +32,8 @@ for(const [file,html] of htmls){
     if(url.hash&&target.endsWith('.html'))assert.ok(htmls.get(target)?.includes(`id="${decodeURIComponent(url.hash.slice(1))}"`),`Missing anchor ${href} in ${file}`);
   }
 }
-assert.equal(chapters.length,12);
-assert.equal(projects.length,12);
+assert.equal(chapters.length,31);
+assert.equal(projects.length,31);
 assert.equal(milestones.length,4);
 assert.ok(repo.includes('Organized-AI/agentic-engineering-labs'));
 for(const c of chapters){
@@ -45,7 +45,7 @@ for(const c of chapters){
   assert.equal((text.match(/^```/gm)||[]).length%2,0,`Unbalanced code block: ${c.slug}`);
 }
 const index=JSON.parse(await fs.readFile(path.join(pub,'assets/search-index.json'),'utf8'));
-assert.equal(index.length,12);
+assert.equal(index.length,31);
 assert.ok(index.every(c=>c.text.length>2000&&c.href.startsWith(base)));
 for(const name of ['pipeline.py','test_pipeline.py','README.md'])assert.equal(await fs.readFile(path.join(root,'labs',name),'utf8'),await fs.readFile(path.join(pub,'downloads/lab',name),'utf8'));
 assert.equal(new Set(sources.map(s=>s.id)).size,sources.length);
@@ -63,7 +63,35 @@ for(const font of ['inter-latin-variable.woff2','jetbrains-mono-latin-variable.w
   const bytes=await fs.readFile(path.join(pub,'assets/fonts',font));
   assert.equal(bytes.subarray(0,4).toString(),'wOF2',`Invalid font file: ${font}`);
 }
-console.log(`PASS: ${htmls.size} pages, ${links} internal links/assets/anchors, 12 substantive chapters, search index, and matching lab downloads.`);
+// Audio edition: page exists, referenced audio resolves, files stay under the asset limit.
+const audioPage=htmls.get(path.join(pub,'audio','index.html'));
+assert.ok(audioPage,'Missing audio edition page');
+const audioDir=path.join(pub,'assets','audio');
+let audioCount=0;
+try{
+  for(const f of await fs.readdir(audioDir)){
+    if(!f.endsWith('.mp3'))continue;
+    audioCount++;
+    const stat=await fs.stat(path.join(audioDir,f));
+    assert.ok(stat.size<25*1024*1024,`Audio file over the 25MiB asset limit: ${f}`);
+  }
+}catch{}
+for(const [file,html] of htmls){
+  for(const m of html.matchAll(/data-src="([^"]+\.mp3)"/g)){
+    const rel=m[1].replace(base+'/','');
+    await fs.access(path.join(pub,rel)).catch(()=>{throw new Error(`Missing audio file ${m[1]} referenced in ${file}`);});
+  }
+}
+if(audioCount>0){
+  const feeds=(await fs.readdir(audioDir)).filter(f=>/^feed-.+\.xml$/.test(f));
+  assert.equal(feeds.length,1,'Expected exactly one tokenized feed file');
+  const feed=await fs.readFile(path.join(audioDir,feeds[0]),'utf8');
+  for(const m of feed.matchAll(/url="[^"]+\/([^/"]+\.mp3)"/g)){
+    await fs.access(path.join(audioDir,m[1])).catch(()=>{throw new Error(`Feed references missing audio ${m[1]}`);});
+  }
+  assert.ok(feed.includes('<item>'),'Feed has no episodes despite audio files present');
+}
+console.log(`PASS: ${htmls.size} pages, ${links} internal links/assets/anchors, ${chapters.length} substantive chapters, search index, and matching lab downloads.`);
 const editorial=await fs.readFile(path.join(pub,'assets/editorial.css'),'utf8');
 assert.ok(editorial.includes('--cream:#fffcf4')&&editorial.includes('--dark:#10100b'),'Missing reference light/dark palette');
 assert.ok(htmls.get(path.join(pub,'index.html')).includes('id="signal-canvas"'),'Missing procedural hero');

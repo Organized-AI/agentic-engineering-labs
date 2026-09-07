@@ -32,6 +32,31 @@ export default {
     assetURL.pathname = path;
     const asset = await env.ASSETS.fetch(new Request(assetURL, request));
     let response = new Response(asset.body, asset);
+    // Media files need Content-Length and Range support: browsers' media
+    // pipeline stalls on streaming responses without them. Buffer these and
+    // answer byte-range requests directly (files are a few MB at most).
+    if (response.status === 200 && /\.(mp3|m4a|ogg|wav|mp4|webm)$/.test(path)) {
+      const buf = await asset.arrayBuffer();
+      const mediaHeaders = new Headers(asset.headers);
+      mediaHeaders.set('Accept-Ranges', 'bytes');
+      const range = request.headers.get('Range');
+      const match = range && range.match(/^bytes=(\d*)-(\d*)$/);
+      if (match && (match[1] !== '' || match[2] !== '')) {
+        let start = match[1] === '' ? Math.max(0, buf.byteLength - parseInt(match[2], 10)) : parseInt(match[1], 10);
+        let end = match[2] === '' || match[1] === '' ? buf.byteLength - 1 : Math.min(parseInt(match[2], 10), buf.byteLength - 1);
+        if (start > end || start >= buf.byteLength) {
+          return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${buf.byteLength}` } });
+        }
+        mediaHeaders.set('Content-Range', `bytes ${start}-${end}/${buf.byteLength}`);
+        mediaHeaders.set('Content-Length', String(end - start + 1));
+        response = new Response(buf.slice(start, end + 1), { status: 206, headers: mediaHeaders });
+      } else {
+        mediaHeaders.set('Content-Length', String(buf.byteLength));
+        response = request.method === 'HEAD'
+          ? new Response(null, { status: 200, headers: mediaHeaders })
+          : new Response(buf, { status: 200, headers: mediaHeaders });
+      }
+    }
     if (response.status === 404) {
       assetURL.pathname = '/404.html';
       const missing = await env.ASSETS.fetch(new Request(assetURL, request));
