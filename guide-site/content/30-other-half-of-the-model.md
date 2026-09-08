@@ -1,6 +1,6 @@
 > **The question:** When the agent misbehaves, how do you prove the model did it?
 
-Colin McNamara runs one GH200 serving text, vision, speech, and a safety model behind a router, with Claude Code driving the text tier. His talk "Your Harness Is the Other Half of the Model" is a measurement diary of everything between the user and the weights - the serving engine, the router, the wire format, the benchmark script itself - lying to him in ways that looked, every single time, like the model's fault. This bonus chapter condenses his evidence into the guide's running theme: the harness is half the system, so attribution is a discipline, not a hunch. His full write-up, with every measurement, is linked in the sources.
+Colin McNamara runs one GH200 serving text, vision, speech, and a safety model behind a router, with Claude Code driving the text tier. His talk ["Your Harness Is the Other Half of the Model"](https://colinmcnamara.com/talks/harness) is a measurement diary of everything between the user and the weights - the serving engine, the router, the wire format, the benchmark script itself - lying to him in ways that looked, every single time, like the model's fault. This bonus chapter condenses his evidence into the guide's running theme: the harness is half the system, so attribution is a discipline, not a hunch. His full write-up, with every measurement, is linked in the sources.
 
 ## The mental model
 
