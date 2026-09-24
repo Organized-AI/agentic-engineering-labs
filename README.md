@@ -96,3 +96,9 @@ These are instructional simulations, not production templates or compliance
 certifications. Passing the tests proves only the named invariants in a small,
 controlled environment. Re-check provider behavior, security requirements,
 licenses, and retention agreements for a real deployment.
+
+---
+
+Guide: [guide.organizedai.vip/agentic-eng/](https://guide.organizedai.vip/agentic-eng/), [guide.organizedai.vip/synter-gap-plan/](https://guide.organizedai.vip/synter-gap-plan/)
+
+Maintained by Jordaaan Hill ([LinkedIn](https://www.linkedin.com/in/jordaaanhill)).
